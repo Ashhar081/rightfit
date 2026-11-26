@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ashhar081.github.io/rightfit/sitemap.xml

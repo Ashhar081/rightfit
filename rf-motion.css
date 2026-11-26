@@ -1,0 +1,67 @@
+/* Apple iOS Fluid Spring Layer & GPU Compositor Helpers */
+
+@keyframes rfTabSlideIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.rf-tab-enter {
+  animation: rfTabSlideIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.btn, .nav-btn, .ex-row, .plan-opt, .fab-qr, .qr-glass-btn {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              color 0.2s ease;
+}
+
+.btn:active, .nav-btn:active, .ex-row:active, .plan-opt:active, .fab-qr:active, .qr-glass-btn:active {
+  transform: scale(0.94) !important;
+}
+
+.bnav-ico, .bnav-icon {
+  will-change: transform;
+  transition: background-color 0.22s ease;
+}
+
+.bnav-btn.active .bnav-ico,
+.bnav-btn.active .bnav-icon {
+  transform: translateY(-1px) scale(1.06);
+}
+
+.card, .kpi-card, .client-card, .member-row {
+  will-change: transform, opacity;
+}
+
+@keyframes rfRippleExpand {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.38; }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+}
+
+.rf-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.52) 0%, rgba(16, 185, 129, 0.2) 60%, transparent 100%);
+  animation: rfRippleExpand 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.btn-ghost .rf-ripple,
+.bnav-btn .rf-ripple,
+.nav-btn .rf-ripple,
+.ex-row .rf-ripple,
+.plan-opt .rf-ripple {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(15, 23, 42, 0.07) 70%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-ripple { animation: none !important; }
+  .btn, .bnav-btn, .nav-btn, .ex-row, .plan-opt, .fab-qr, .qr-glass-btn, .bnav-ico, .bnav-icon {
+    transition: none !important;
+  }
+}
